@@ -1,0 +1,34 @@
+.Login-section {
+    padding: 170px 100px 150px 100px;
+}
+
+.Login-header {
+    font-weight: 600;
+    font-size: 50px;
+    color: #0B4654;
+}
+
+.Login-create-acc {
+    color: #028F98;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.Login-dont-acc {
+    font-weight: 500;
+    color: #828282;
+    font-size: 18px;
+}
+
+.Login-form-section {
+    margin-top: 30px;
+}
+
+.Login-forgotten-password {
+    color: #028F98;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 5px;
+}
