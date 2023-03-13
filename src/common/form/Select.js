@@ -1,5 +1,5 @@
 import React from 'react'
-import { Select } from '@chakra-ui/react'
+// import { Select } from '@chakra-ui/react'
 
 const SelectField = ({ 
     label,
@@ -17,21 +17,22 @@ const SelectField = ({
     ...props
  }) => {
     return (
-        <Select 
-            placeholder={placeholder}
-            color='#828282'
-            _placeholder={{ color: "#828282" }}
-            width={'465px' || width}
+        <select 
+            // placeholder={placeholder}
             onChange={onChange}
             id={id}
             required={required}
             style={style || {
                 border: "1.89px solid #8692A6",
                 borderRadius: "5px",
-                margin: "8px"
+                margin: "8px",
+                color: "#828282",
+                width: "465px" || width,
+                height: "40px"
             }}
             {...props}
         >
+            {!props.noPlaceholder && <option value=''>{placeholder ?? '- SELECT -'}</option>}
         {options.map((optionValue, index) => (
             value === optionValue ? (
                 <option key={index} value={value} disabled={disabled}>
@@ -43,7 +44,7 @@ const SelectField = ({
                 </option>
             )
         ))}
-        </Select>
+        </select>
     )
 }
 

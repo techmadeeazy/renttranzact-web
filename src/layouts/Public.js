@@ -1,36 +1,67 @@
-import React from 'react'
-import { Center, Flex } from '@chakra-ui/react'
-import { Carousel } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Center, Flex, VStack } from '@chakra-ui/react'
 
 import key3 from '../assets/download3.png'
-
 import "./public.css";
 
-const PublicLayout = ({ children }) => {
+const PublicLayout = ({ children }) => {  
+    const [ selected, setSelected ] = useState(0);
+    const style =
+        selected >= 1 ? { transform: `translateX(-${selected * 300}px)` } : {};
+
+    const renderIndicator = []
+    for(let i=0; i<3; i++) {
+        renderIndicator.push(
+            <li data-value={i} key={i} className={selected === i ? 'active' : ''}></li>
+        )
+    }
+
+    const handleClick = e => {
+        let value = e.target.getAttribute('data-value')
+        if (value !== null) {
+        //   this.setState({
+        //     selected: value
+        //   });
+            setSelected(value)
+        }
+    };
+
     return (
         <div style={{ width: "100%" }}>
             <Flex>
-                <div style={{ width: "50%", backgroundColor: "#028F98"}}>
+                <div style={{ width: "50%", backgroundColor: "#028F98", paddingTop: "230px"}}>
                     <Center w='100%'>
-                        <Carousel style={{ width: "60%", marginTop: "40%", }}>
-                            <Carousel.Item>
-                                <img src={key3} alt="First slide"/>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img src={key3} alt="First slide" />
-                            </Carousel.Item>
-                        </Carousel> 
+                        <VStack>
+                            <div className="PublicSlider">
+                                <div className="PubicSlide-items" style={style}>
+                                    <div className="item">
+                                        <img src={key3} alt="First slide"/>
+                                    </div>
+                                    <div className="item">Slide 2</div>
+                                    <div className="item">Slide 3</div>
+                                </div>
+                                {/* <ul className="indicators"></ul> */}
+
+                                
+                            </div>
+                        </VStack>
                     </Center>
 
-                   <div style={{ padding: "55px 120px 0px 120px" }}>
-                        <div className='privateLayWel'>
+                   <div style={{ padding: "35px 120px 0px 120px" }}>
+                        <div className='PublicLayWel'>
                             Welcome!
                         </div>
-                        <div className='privateLaySubWel'>
+                        <div className='PublicLaySubWel'>
                             Rent verified properties through <b>Rentranzact</b> with just a few clicks
                         </div>
+
+                        <ul onClick={handleClick} className="indicators">
+                                {renderIndicator}
+                        </ul>
                    </div>
                 </div>
+
+
 
                 {/* Space area for components */}
                 <main style={{ width: "50%", height: "100vh" }}>

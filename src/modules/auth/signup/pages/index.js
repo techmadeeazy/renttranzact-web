@@ -10,9 +10,10 @@ function index() {
     return (
         <section className='Signup-section'>
             <Box>
-                {/* <MainSignup /> */}
+                <MainSignup />
                 {/* <VerificationSignupForm /> */}
-                <CreateProfileSignup />
+                {/* <CreateProfileSignup /> */}
+                {/* <ContactInfoSignup /> */}
             </Box>
         </section>
     )
@@ -36,7 +37,7 @@ function MainSignup (){
                 </div>
             </HStack>
 
-            <form style={{ marginTop: "30px" }}>
+            <form style={{ marginTop: "20px" }}>
                 <Input 
                     placeholder='Username'
                 />
@@ -50,7 +51,7 @@ function MainSignup (){
                     placeholder='Re-type Password'
                 />
                 <Select 
-                    placeholder='Profile Type'
+                    placeholder='&nbsp; Profile Type'
                     width='465px'
                     options={[" ", "Landlord", "Tenant", "Agent"]}
                 />
@@ -76,7 +77,7 @@ function VerificationSignupForm (){
         <>
             <Center>
                 <VStack>
-                    <img src={verifyPic} alt='img' style={{ height: "310px", marginBottom: "30px" }}/>
+                    <img src={verifyPic} alt='img' style={{ height: "250px", marginBottom: "30px" }}/>
                     <div className='Signup-verify-code'>Verification code has been sent to de*****@gmail.com</div>
                     
                     <form>
@@ -98,39 +99,91 @@ function VerificationSignupForm (){
 }
 
 
+export function SignupHeadSubHead (props) {
+    return(
+        <div>
+            <div className='Signup-header'>{props.header}</div>
+            <div style={{ color: "#8692A6", fontSize: "18px", fontWeight: "500", marginBottom: "20px" }}>
+               {props.subHead} </div>
+        </div>
+    )
+}
+
+
 
 function CreateProfileSignup (){
     return(
         <>
-            <div>
-                <div className='Signup-header'>Create Profile</div>
-                <div style={{ color: "#8692A6", fontSize: "18px", fontWeight: "500", marginBottom: "30px" }}>
-                    Let’s Personlise your search</div>
-            </div>
+            <SignupHeadSubHead 
+                header='Create Profile'
+                subHead="Let’s Personlise your search"
+            />
             <form>
                 <Input 
                     placeholder='Username'
+                    width='465px'
                 />
                 <Select 
-                    placeholder='Gender'
+                    placeholder='&nbsp; Gender'
                     width='465px'
                     options={[" ", "Male", "Female"]}
                 />
                 <Input 
                     placeholder='Home Address'
-                />
-                <Select 
-                    placeholder='State'
                     width='465px'
-                    options={[" ", "Male", "Female"]}
                 />
                 <Select 
-                    placeholder='Local Government Area'
+                    placeholder='&nbsp; State'
+                    width='465px'
+                    options={[" ", "State A", "State B"]}
+                />
+                <Select 
+                    placeholder='&nbsp; Local Government Area'
                     width='465px'
                     options={[" ", "Male", "Female"]}
                 />
                 <Input 
                     placeholder='Website (Optional)'
+                    width='465px'
+                />
+                <Button 
+                    text='Continue'
+                    width='465px'
+                />
+            </form>
+        </>
+    )
+}
+
+
+
+function ContactInfoSignup (){
+    return(
+        <>
+            <SignupHeadSubHead 
+                header='Contact Information'
+                subHead="Let’s Personalise your search"
+            />
+            <form>
+                <Input 
+                    placeholder='First Name'
+                    width='465px'
+                />
+                <Input 
+                    placeholder='Last Name'
+                    width='465px'
+                />
+                <Input 
+                    placeholder='Email Address'
+                    width='465px'
+                />
+                <Input 
+                    placeholder='Mobile Number'
+                    width='465px'
+                />
+                <Input 
+                    placeholder='Whatsapp Number (Optional)'
+                    width='465px'
                 />
                 <Button 
                     text='Continue'
