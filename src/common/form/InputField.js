@@ -22,7 +22,7 @@ const InputField = ({
             {leftElement && <InputLeftElement children={leftElement} /> }
             <Input 
                 type={type || 'text'}
-                width={'465px' || width}
+                width={ '465px' || width}
                 id={id}
                 onChange={onChange}
                 onClick={onClick}
